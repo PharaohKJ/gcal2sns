@@ -121,3 +121,6 @@ Things you may want to cover:
 
 ```
 
+## Calendar API
+
+http://www.rubydoc.info/github/google/google-api-ruby-client/Google/Apis/CalendarV3/CalendarService
