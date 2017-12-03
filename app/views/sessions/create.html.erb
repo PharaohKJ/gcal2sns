@@ -1,2 +1,15 @@
 <%= params.to_s %>
+<hr/>
 <%= @user_info.to_s %>
+<hr/>
+<%= @user_info.info.name %>
+<hr/>
+<%= @user_info.provider %>
+<hr/>
+<%= @user_info.uid %>
+<hr/>
+<%= @user_info.credentials.token %>
+<hr/>
+<pre>
+<%= @user_info.auth.to_yaml.to_s %>
+</pre>

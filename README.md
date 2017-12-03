@@ -95,3 +95,29 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# リフレッシュトークンが発行されない
+
+- [Deviseとomniauth-google-oauth2でrefresh_tokenが発行される条件を調べてみた - Qiita](https://qiita.com/s-show/items/3d5f97c8253748ad0e2b)
+
+- [oauth 2.0 - How do I get back a 'refresh_token' for rails app with omniauth google oauth2? - Stack Overflow](https://stackoverflow.com/questions/17894192/how-do-i-get-back-a-refresh-token-for-rails-app-with-omniauth-google-oauth2)
+
+## 解決方法
+
+どうやら `scope` を追加して認証だけじゃなく、カレンダーなどのサービスに接続する場合には `prompt: 'consent'` をOmniauthの設定で指定してあげないとダメなようだ。最終的には以下
+
+``` ruby
+  provider :google_oauth2,
+           ENV['GOOGLE_CLIENT_ID'],
+           ENV['GOOGLE_SECRET'],
+           {
+             image_size: 150,
+             name: :google,
+             access_type: 'offline',
+             scope: https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar',
+             prompt: 'consent'
+           }
+
+```
+
