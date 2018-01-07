@@ -1,3 +1,30 @@
-<h1>Hello World!</h1>
+<h1>Gcal2SNS</h1>
+<% if @user.nil? %>
+  ログインしていません
+<% else %>
+  ログインしてます。 <%= @user.uid %>
+<% end %>
+<% unless @calendar_list.nil? %>
+  <div>
+    <table border="1">
+      <thead>
+        <th>id</th>
+        <th>summary</th>
+        <th>description</th>
+      </thead>
+      <tbody>
+        <% @calendar_list.items.each do |cal| %>
+          <tr>
+            <td><%=link_to cal.id, calendar_path(id: cal.id) %> </td>
+            <td><%= cal.summary %></td>
+            <td><%= cal.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<% end %>
+<div>
 <%= link_to "Login", login_path %>
 <%= link_to "(logout)", logout_path %>
+</div>
