@@ -9,6 +9,7 @@ gem 'bootstrap-sass'
 gem 'dotenv-rails'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
